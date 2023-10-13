@@ -32,6 +32,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -88,13 +89,17 @@ fun HomeScreen() {
 
             )
 
-        Spacer(modifier = Modifier.height(13.dp))
+        Spacer(modifier = Modifier.padding(13.dp))
 
         Box1()
 
-        Spacer(modifier = Modifier.height(13.dp))
+        Spacer(modifier = Modifier.padding(13.dp))
 
         Location()
+
+        Spacer(modifier = Modifier.padding(13.dp))
+
+        Box2()
 
     }
 }
@@ -107,7 +112,7 @@ fun Box1() {
         modifier = Modifier
             .clip(RoundedCornerShape(10.dp))
             .fillMaxWidth()
-            .background(color = Color.Cyan)
+            .background(color = colorResource(id = R.color.blueOcean))
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -145,14 +150,73 @@ fun Location() {
         Spacer(modifier = Modifier.padding(3.dp))
         Text(text = "Yogyakarta", fontSize = 40.sp, fontWeight = FontWeight.Bold)
     }
-    
+
     Spacer(modifier = Modifier.padding(13.dp))
-    
-    Text(text = "Kasihan, Kabupaten Bantul, Daerah Istimewa Yogyakarta",
+
+    Text(
+        text = "Kasihan, Kabupaten Bantul, Daerah Istimewa Yogyakarta",
         textAlign = TextAlign.Center,
         fontSize = 20.sp,
         color = Color.Gray
-        )
+    )
 
 }
+
+@Composable
+fun Box2() {
+    Box(
+        modifier = Modifier
+            .clip(RoundedCornerShape(10.dp))
+            .fillMaxWidth()
+            .background(color = colorResource(id = R.color.blueOcean))
+    ) {
+        Column {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceAround,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(20.dp)
+            ) {
+                Column (
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    ){
+                    Text(text = "Humidity")
+                    Text(text = "98%", fontWeight = FontWeight.Bold, fontSize = 20.sp)
+                }
+                Column (
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    ){
+                    Text(text = "UV Index")
+                    Text(text = "9 / 10", fontWeight = FontWeight.Bold, fontSize = 20.sp)
+                }
+
+            }
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceAround,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(20.dp)
+            ) {
+                Column (
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ){
+                    Text(text = "Sunrise")
+                    Text(text = "05.00 AM", fontWeight = FontWeight.Bold, fontSize = 20.sp)
+                }
+                Column (
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ){
+                    Text(text = "Sunset")
+                    Text(text = "05.40 AM", fontWeight = FontWeight.Bold, fontSize = 20.sp)
+                }
+            }
+
+
+        }
+    }
+
+}
+
 
